@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pendaftaran Anggota Komunitas Informatika</title>
+<style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font modern */
+  background: linear-gradient(to bottom right, #e0f2f7, #bbdefb); /* Gradien background */
+  margin: 0; /* Hilangkan margin default body */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Pastikan tinggi body minimal 100vh */
+}.container {
+  width: 500px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px; /* Border radius lebih besar */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Box shadow lebih tebal */
+  background: linear-gradient(to bottom, #ffffff, #f5f5f5); /* Gradien background container */
+}
+
+h2 {
+  text-align: center;
+  color: #2196f3; /* Warna biru cerah */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* Efek shadow pada judul */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555; /* Warna teks label lebih gelap */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: calc(100% - 22px); /* Hitung lebar input dengan padding dan border */
+  padding: 12px; /* Padding lebih besar */
+  margin-bottom: 15px;
+  border: 1px solid #c0c0c0; /* Warna border lebih terang */
+  border-radius: 5px;
+  box-sizing: border-box; /* Pastikan padding dan border masuk dalam lebar */
+  transition: border-color 0.3s ease; /* Transisi warna border */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  border-color: #2196f3; /* Warna border saat fokus */
+  outline: none; /* Hilangkan outline default */
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.3); /* Efek shadow saat fokus */
+}
+
+
+button {
+  background-color: #2196f3; /* Warna biru cerah */
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transisi warna background */
+}
+
+button:hover {
+  background-color: #1976d2; /* Warna biru lebih gelap saat hover */
+}.copyright {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-top: 20px;
+}
+
+/* Style untuk error message */.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Pendaftaran Anggota Komunitas Informatika</h2>
+  <form>
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" name="nama" required>
+    <div class="error" id="namaError"></div> <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <div class="error" id="emailError"></div> <label for="no_hp">No. HP:</label>
+    <input type="tel" id="no_hp" name="no_hp" required>
+    <div class="error" id="noHpError"></div> <label for="latar_belakang">Latar Belakang:</label>
+    <textarea id="latar_belakang" name="latar_belakang" rows="4" required></textarea>
+    <div class="error" id="latarBelakangError"></div> <button type="submit">Kirim</button>
+  </form>
+  <div class="copyright">
+    &copy; 2024. Hak cipta dilindungi by meizar if.
+  </div>
+</div>
+
+<script>
+  // Contoh validasi (bisa dikembangkan lebih lanjut)
+  const form = document.querySelector('form');
+  form.addEventListener('submit', function(event) {
+    let isValid = true;
+
+    // Validasi Nama (contoh: tidak boleh kosong)
+    const nama = document.getElementById('nama').value;
+    if (nama.trim() === "") {
+      document.getElementById('namaError').textContent = "Nama harus diisi.";
+      isValid = false;
+    } else {
+      document.getElementById('namaError').textContent = "";
+    }
+
+        // Validasi Email (contoh: format email)
+        const email = document.getElementById('email').value;
+        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+          document.getElementById('emailError').textContent = "Format email tidak valid.";
+          isValid = false;
+        } else {
+          document.getElementById('emailError').textContent = "";
+        }
+
+    if (!isValid) {
+      event.preventDefault(); // Mencegah form di-submit jika tidak valid
+    }
+  });
+</script>
+
+</body>
+</html>
